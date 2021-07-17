@@ -5,7 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Service;
+
+import javax.mail.MessagingException;
 
 @SpringBootApplication
 public class SpringEmailDemoApplication {
@@ -16,9 +17,15 @@ public class SpringEmailDemoApplication {
 		SpringApplication.run(SpringEmailDemoApplication.class, args);
 	}
 	@EventListener(ApplicationReadyEvent.class)
-	public void triggerMail(){
-	senderService.sendSimpleEmail("arjungautam5431@gmail.com",
+	public void triggerMail() throws MessagingException {
+	/*senderService.sendSimpleEmail("arjungautam5431@gmail.com",
 			"This is email body",
-			"This is email subject");
+			"This is email subject");*/
+		senderService.sendEmailWithAttachment("arjungautam5431@gmail.com",
+				"This is Arjun Codes",
+				"Resume",
+				"C:\\Users\\arjun\\OneDrive\\Desktop\\resume.pdf");
 	}
+
+
 }
