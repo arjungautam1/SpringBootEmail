@@ -21,7 +21,7 @@ public class EmailSenderService {
                                 String body
     ) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("arjungautam8877@gmail.com");
+        message.setFrom("fromemail@gmail.com");
         message.setTo(toEmail);
         message.setText(body);
         message.setSubject(subject);
@@ -30,28 +30,6 @@ public class EmailSenderService {
 
 
     }
-
-    public void sendEmailWithAttachment(String toEmail,
-                                        String body,
-                                        String subject,
-                                        String attachment
-    ) throws MessagingException {
-        MimeMessage mimeMessage = mailSender.createMimeMessage();
-
-        MimeMessageHelper mimeMessageHelper=new MimeMessageHelper(mimeMessage,true);
-        mimeMessageHelper.setFrom("arjungautam8877@gmail.com");
-        mimeMessageHelper.setTo(toEmail);
-        mimeMessageHelper.setText(body);
-        mimeMessageHelper.setSubject(subject);
-
-        FileSystemResource fileSystemResource=
-                new FileSystemResource( new File(attachment));
-        mimeMessageHelper.addAttachment(fileSystemResource.getFilename(),
-                fileSystemResource
-                );
-        mailSender.send(mimeMessage);
-        System.out.println("Mail with attachment sent..");
-
 
     }
 }
